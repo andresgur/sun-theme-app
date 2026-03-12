@@ -1,6 +1,6 @@
 # Sun Theme
 
-`<img src="icons/sun-theme.png" width="120" />`{=html}
+![App Icon](icons/icons/sun-theme.png)
 
 Automatically switch Ubuntu / GNOME between **Light** and **Dark**
 themes based on **sunrise and sunset** at your location.
@@ -28,12 +28,9 @@ Ubuntu / GNOME system with:
     systemd (user services)
     sunwait
     zenity
+    [sunwait](https://github.com/risacher/sunwait)
 
-Install `sunwait` if needed:
-
-``` bash
-sudo snap install rjd-sunwait
-```
+**sunwait** is used to calculate sunrise and sunset times
 
 ------------------------------------------------------------------------
 
