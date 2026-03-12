@@ -1,6 +1,6 @@
 # Sun Theme
 
-`<img src="icon.png" width="120" />`{=html}
+`<img src="icons/icon.png" width="120" />`{=html}
 
 Automatically switch Ubuntu / GNOME between **Light** and **Dark**
 themes based on **sunrise and sunset** at your location.
@@ -54,31 +54,13 @@ Run the installer:
 
 This will:
 
--   install scripts to `~/.local/bin`
--   install systemd units
--   enable the timer
-
-------------------------------------------------------------------------
-
-## Configure
-
-Run the setup app from your applications menu:
-
-**Sun Theme Setup**
-
-Or run the script directly:
-
-``` bash
-dark-toggle-gui.sh
-```
-
-Enter:
-
--   Latitude
--   Longitude
+-   Install scripts to `~/.local/bin`
+-   Install systemd units
+-   Enable the timer
+-   Ask for your latitude and longitude coordinates to calculate the sunrise and sunset times
 
 The configuration will be saved and the timer will automatically handle
-switching.
+switching. If you need to change the coordinates, relaunch the app from the menu "Dark Mode App" or from the `~/.local/bin/darkmode-app.sh`
 
 ------------------------------------------------------------------------
 
@@ -139,4 +121,5 @@ systemctl --user daemon-reload
 
 ## License
 
-MIT
+GNU
+
