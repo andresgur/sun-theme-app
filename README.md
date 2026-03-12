@@ -26,11 +26,10 @@ Ubuntu / GNOME system with:
 
     gsettings
     systemd (user services)
-    sunwait
     zenity
-    [sunwait](https://github.com/risacher/sunwait)
+    sunwait
 
-**sunwait** is used to calculate sunrise and sunset times
+**[sunwait](https://github.com/risacher/sunwait)** is used to calculate sunrise and sunset times
 
 ------------------------------------------------------------------------
 
@@ -92,7 +91,8 @@ The timer periodically checks whether the current time is between
     └── systemd/
         ├── toggle-dark.service
         └── toggle-dark.timer
-
+    │
+    └── icons/sun-theme.png
 ------------------------------------------------------------------------
 
 ## Uninstall
