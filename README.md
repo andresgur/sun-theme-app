@@ -1,6 +1,6 @@
 # Sun Theme
 
-![App Icon](icons/icons/sun-theme.png)
+![App Icon](icons/sun-theme.png)
 
 Automatically switch Ubuntu / GNOME between **Light** and **Dark**
 themes based on **sunrise and sunset** at your location.
