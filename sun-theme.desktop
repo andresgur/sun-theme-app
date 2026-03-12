@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Dark Mode App
+Exec=sh -c "$HOME/.local/bin/darkmode-app.sh"
+# icons are looked for in ~/.local/share/icons by default
+Icon=sun-theme.png
+Terminal=false

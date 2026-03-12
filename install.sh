@@ -78,5 +78,6 @@ cp icons/sun-theme.png ~/.local/share/icons/sun-theme.png
 # create desktop app
 mkdir -p $DESKTOP_DIR
 cp sun-theme.desktop $DESKTOP_DIR/sun-theme.desktop
+update-desktop-database $DESKTOP_DIR
 
 echo "Done."
