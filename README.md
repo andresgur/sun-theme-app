@@ -1,6 +1,6 @@
 # Sun Theme
 
-`<img src="icons/icon.png" width="120" />`{=html}
+`<img src="icons/sun-theme.png" width="120" />`{=html}
 
 Automatically switch Ubuntu / GNOME between **Light** and **Dark**
 themes based on **sunrise and sunset** at your location.
@@ -78,6 +78,8 @@ System architecture:
 
 The timer periodically checks whether the current time is between
 **sunrise and sunset** and applies the correct theme.
+
+**Note**: It may take a while until your theme correctly changes!
 
 ------------------------------------------------------------------------
 
