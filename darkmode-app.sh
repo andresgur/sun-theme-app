@@ -1,5 +1,5 @@
 #!/bin/bash
-
+re='^[+-]?[0-9]+([.][0-9]+)?$'
 CONFIG="$HOME/.config/darkmode-app.conf"
 ICON="$HOME/.local/share/icons/darkthemetoggler.png"
 INSTALL_DIR="$HOME/.local/bin"
@@ -14,20 +14,33 @@ else
 fi
 
 # Ask for lat/lon if not set
-result=$(zenity --entry --window-icon=$ICON --title="Dark Mode Setup" --text="Latitude (deg)" --entry-text="$LAT")
-if [ $result=="" ]; then
-        # user pressed cancel
+while true; do
+    result=$(zenity --entry --window-icon="$ICON" --title="Dark Mode Setup" --text="Latitude (deg)" --entry-text="$LAT")
+    
+    if [ -z "$result" ]; then
+        echo "Cancelled"
         exit
-else
-	LAT=result
-fi	
-result=$(zenity --entry --window-icon=$ICON --title="Dark Mode Setup" --text="Longitude (deg)" --entry-text="$LON")
-if [ $result=="" ]; then
-        # user pressed cancel
-	exit
-else
-	LON=result
-fi	
+    elif [[ $result =~ $re ]]; then
+        LAT="$result"
+        break
+    else
+        zenity --error --width=200 --window-icon="$ICON" --text="Please enter a valid number!" 
+    fi
+done
+
+while true; do
+    result=$(zenity --entry --window-icon="$ICON" --title="Dark Mode Setup" --text="Longitude (deg)" --entry-text="$LON")
+    
+    if [ -z "$result" ]; then
+        echo "Cancelled"
+        exit
+    elif [[ $result =~ $re ]]; then
+        LON="$result"
+        break
+    else
+        zenity --error --width=200 --window-icon="$ICON" --text="Please enter a valid number!"
+    fi
+done
 
 # update config file
 mkdir -p "$(dirname "$CONFIG")"
@@ -36,7 +49,7 @@ LON="$LON"E
 echo "$LAT,$LON" > "$CONFIG"
 
 # trigger toggle
-"$INSTALL_DIR/.local/bin/toggle-theme.sh"
+"$INSTALL_DIR/toggle-theme.sh"
 
 
 
