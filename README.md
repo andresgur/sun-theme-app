@@ -1,0 +1,142 @@
+# Sun Theme
+
+`<img src="icon.png" width="120" />`{=html}
+
+Automatically switch Ubuntu / GNOME between **Light** and **Dark**
+themes based on **sunrise and sunset** at your location.
+
+No background daemon.\
+Just a small script + a systemd timer.
+
+------------------------------------------------------------------------
+
+## What it does
+
+-   Detects **sunrise and sunset** using `sunwait`
+-   Switches GNOME theme automatically
+-   Runs periodically via **systemd user timer**
+-   Provides a small **GUI setup script** to configure latitude and
+    longitude
+
+------------------------------------------------------------------------
+
+## Requirements
+
+Ubuntu / GNOME system with:
+
+    gsettings
+    systemd (user services)
+    sunwait
+    zenity
+
+Install `sunwait` if needed:
+
+``` bash
+sudo snap install rjd-sunwait
+```
+
+------------------------------------------------------------------------
+
+## Install
+
+Clone the repository:
+
+``` bash
+git clone https://github.com/yourusername/sun-theme.git
+cd sun-theme
+```
+
+Run the installer:
+
+``` bash
+./install.sh
+```
+
+This will:
+
+-   install scripts to `~/.local/bin`
+-   install systemd units
+-   enable the timer
+
+------------------------------------------------------------------------
+
+## Configure
+
+Run the setup app from your applications menu:
+
+**Sun Theme Setup**
+
+Or run the script directly:
+
+``` bash
+dark-toggle-gui.sh
+```
+
+Enter:
+
+-   Latitude
+-   Longitude
+
+The configuration will be saved and the timer will automatically handle
+switching.
+
+------------------------------------------------------------------------
+
+## How it works
+
+System architecture:
+
+    systemd timer
+            ↓
+    toggle-dark.service
+            ↓
+    toggle-dark-exact.sh
+            ↓
+    gsettings set org.gnome.desktop.interface color-scheme
+
+The timer periodically checks whether the current time is between
+**sunrise and sunset** and applies the correct theme.
+
+------------------------------------------------------------------------
+
+## File Structure
+
+    sun-theme/
+    │
+    ├── install.sh
+    ├── toggle-dark-exact.sh
+    ├── dark-toggle-gui.sh
+    ├── icon.png
+    │
+    └── systemd/
+        ├── toggle-dark.service
+        └── toggle-dark.timer
+
+------------------------------------------------------------------------
+
+## Uninstall
+
+Disable the timer:
+
+``` bash
+systemctl --user disable toggle-dark.timer
+```
+
+Remove installed files:
+
+    ~/.local/bin/toggle-dark-exact.sh
+    ~/.local/bin/dark-toggle-gui.sh
+    ~/.config/systemd/user/toggle-dark.*
+    ~/.config/darkmode-app.conf
+
+Reload systemd:
+
+``` bash
+systemctl --user daemon-reload
+```
+
+------------------------------------------------------------------------
+
+## License
+
+MIT
