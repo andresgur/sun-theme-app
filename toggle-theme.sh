@@ -24,7 +24,7 @@ SUNRISE_TS=$(date -d "$today $SUNRISE" +%s 2>/dev/null || date -d "tomorrow $SUN
 SUNSET_TS=$(date -d "$today $SUNSET" +%s 2>/dev/null || date -d "tomorrow $SUNSET" +%s)
 
 # get current theme --> remove quotations for the string comparison
-current_theme=$(gsettings get org.gnome.desktop.interface gtk-theme| tr -d "'"))
+current_theme=$(gsettings get org.gnome.desktop.interface gtk-theme | tr -d "'")
 # Set theme based on current time
 if [ $NOW -ge $SUNSET_TS ] || [ $NOW -lt $SUNRISE_TS ] ; then
 	target_theme='Yaru-dark'
